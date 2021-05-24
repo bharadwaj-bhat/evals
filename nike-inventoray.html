@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <style>
+
+        .cont {
+            max-width:80vw;
+            margin:auto;
+            margin-top: 100px;
+        }
+
+        .lhs{
+            width:25%;
+            height: 550px;
+            float:left;
+            outline:2px solid black;
+        }
+
+        #rhs{
+            width:75%;
+            float:left;
+            outline:2px solid black;
+            height:550px;
+            display: flex;
+        }
+
+        .form {
+            margin:10%;
+        }
+
+        .form input {
+            margin:10px;
+            outline: 1px solid black;
+        }
+
+        #addProd {
+            margin:10px;
+            padding:10px;
+            color: rgb(18, 243, 29);
+            font-weight: bold;
+        }
+
+        
+
+        #card {
+            height:250px;
+            width:28%;
+            min-width:200px;
+            outline: solid 1px black;
+            margin:2.6%;
+            flex-wrap: nowrap;
+            text-align: center;
+        }
+
+        #card > img {
+            text-align: center;
+            margin:35px;
+        }
+
+        #card button {
+            margin-left:20px;
+        }
+        #update {
+            margin-left:255px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class = "cont">
+        <div class = "lhs">
+            <div class = "form">
+                <input type="text" placeholder="Name" id = "name" value="">
+                <input type="number" placeholder="Price" id = "price" value="">
+                <input type="text" placeholder ="Discription" id = "discription" value="" >
+                <input type="text" placeholder ="Estimated Delivery" id = "delivery" value="" >
+                <input type="text" placeholder ="Image url" id = "img" value="" >
+                <button id = "addProd">Add Product</button>
+            </div>
+        </div>
+        <div id = "rhs"></div>
+    </div>    
+    
+</body>
+</html>
+
+<script>
+
+   var addProd = document.getElementById('addProd')
+   addProd.addEventListener('click' , appendOb)
+
+  
+   
+   var obj = { };
+   var i = 1;
+
+   function appendOb () {
+    var name = document.getElementById('name').value
+    var price = document.getElementById('price').value;
+    var disc = document.getElementById('discription').value;
+    var delv = document.getElementById('delivery').value;
+    var img = document.getElementById('img').value;
+   // var prod = `prod${i}`;
+     obj.prod = name;
+     obj.price = price;
+     obj.disc = disc;
+     obj.delv = delv;
+     obj.img = img;
+
+     var div = document.getElementById('rhs')
+    //  div.innerHTML = "<div id = 'card'></div>"
+     //card.setAttribute('class', 'card')
+     var card = document.createElement('div');
+     card.setAttribute('id', 'card')
+     div.appendChild(card)
+
+     card.innerHTML = ` <img src = "${obj.img}">`;
+     var update = document.createElement('button');
+     update.setAttribute('id','update');
+     update.innerHTML = "Update";
+     card.appendChild(update)
+
+     var remove = document.createElement('button');
+       remove.setAttribute('id', 'remove');
+       remove.innerHTML = "Remove"
+       card.appendChild(remove)
+
+       remove.addEventListener('click', function (){
+           div.removeChild(card)
+       })
+
+       updata.addEventListener('click', function(){
+           var new_price = prompt(" Enter new price")
+
+       })
+    
+   } 
+ 
+
+</script>
